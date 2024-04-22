@@ -1,0 +1,116 @@
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+@import url('./reset.css');
+@import url('./vite-promo.css');
+@import url('./header.css');
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+.form-btn {
+  background-color: #4e75ff;
+  border: none;
+  padding: 10px 16px;
+  color: #fff;
+  border-radius: 8px;
+}
+.form-input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #808080;
+  outline: transparent;
+  width: 272px;
+}
+.form {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.imagesFetch {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.imagesFetch-item {
+  width: 360px;
+  height: 200px;
+  position: relative;
+}
+.imagesFetch-item img {
+  width: 100%;
+  height: 200px;
+}
+.imagesFetch-item-description {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 48px;
+  z-index: 2;
+  background-color: #fff;
+  border: 1px solid black;
+}
+.description-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+.item-name {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.description-list-item span {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: #ff3d00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  display: none;
+  margin: 0 auto;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
