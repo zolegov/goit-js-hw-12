@@ -2,6 +2,7 @@
 import SimpleLightbox from 'simplelightbox';
 // Додатковий імпорт стилів
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
 let gallery = new SimpleLightbox('.gallery a');
 const imagesFetch = document.querySelector('.imagesFetch');
 export function renderImage(results) {
@@ -38,4 +39,15 @@ export function renderImage(results) {
   imagesFetch.insertAdjacentHTML('beforeend', markup);
 
   gallery.refresh();
+  const imgBoxes = document.querySelectorAll('.imagesFetch-item');
+
+  imgBoxes.forEach(item => {
+    // console.log('item: ', item);
+    const itemHeight = item.getBoundingClientRect();
+
+    window.scrollBy({
+      top: itemHeight.height * 2,
+      behavior: 'smooth',
+    });
+  });
 }
