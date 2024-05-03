@@ -39,15 +39,4 @@ export function renderImage(results) {
   imagesFetch.insertAdjacentHTML('beforeend', markup);
 
   gallery.refresh();
-  const imgBoxes = document.querySelectorAll('.imagesFetch-item');
-
-  imgBoxes.forEach(item => {
-    // console.log('item: ', item);
-    const itemHeight = item.getBoundingClientRect();
-
-    window.scrollBy({
-      top: itemHeight.height * 2,
-      behavior: 'smooth',
-    });
-  });
 }
