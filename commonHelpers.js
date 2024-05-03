@@ -1,29 +1,29 @@
-import{S as g,a as h,i as l}from"./assets/vendor-09d7c26e.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const c of s.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&t(c)}).observe(document,{childList:!0,subtree:!0});function r(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function t(e){if(e.ep)return;e.ep=!0;const s=r(e);fetch(e.href,s)}})();let f=new g(".gallery a");const y=document.querySelector(".imagesFetch");function m(i){const o=i.reduce((t,e)=>t+=`
+import{S as g,a as y,i as n}from"./assets/vendor-6e0bf343.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const p of o.addedNodes)p.tagName==="LINK"&&p.rel==="modulepreload"&&r(p)}).observe(document,{childList:!0,subtree:!0});function s(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function r(e){if(e.ep)return;e.ep=!0;const o=s(e);fetch(e.href,o)}})();let h=new g(".gallery a");const f=document.querySelector(".imagesFetch");function d(i){const t=i.reduce((s,r)=>s+=`
           <li class="imagesFetch-item">
           <div class="gallery">
-                 <a href="${e.largeImageURL}">
-                    <img src="${e.webformatURL}" alt="1"/>
+                 <a href="${r.largeImageURL}">
+                    <img src="${r.webformatURL}" alt="1"/>
                  </a>
           </div>
           <div class="imagesFetch-item-description">
               <ul class="description-list">
               <li class="description-list-item">
                   <p class="item-name">Likes</p>
-                  <span>${e.likes}</span>
+                  <span>${r.likes}</span>
               </li>
               <li class="description-list-item">
                   <p class="item-name">Views</p>
-                  <span>${e.views}900290</span>
+                  <span>${r.views}900290</span>
               </li>
               <li class="description-list-item">
                   <p class="item-name">Comments</p>
-                  <span>${e.comments}229</span>
+                  <span>${r.comments}229</span>
               </li>
               <li class="description-list-item">
                   <p class="item-name">Downloads</p>
-                  <span>${e.downloads}610937</span>
+                  <span>${r.downloads}610937</span>
               </li>
               </ul>
           </div>
-          </li>  `,"");y.insertAdjacentHTML("beforeend",o),f.refresh(),document.querySelectorAll(".imagesFetch-item").forEach(t=>{const e=t.getBoundingClientRect();window.scrollBy({top:e.height*2,behavior:"smooth"})})}const b=document.querySelector(".btn");let n=1;async function d(i){const o="43173042-04092544e8d4f8f0c3df25e51",r=new URLSearchParams({orientation:"horizontal",image_type:"photo",safesearch:!0,per_page:15,page:n});try{const t=await h.get(`https://pixabay.com/api/?key=${o}&q=${i}&${r}`);return n*15>t.data.totalHits?(b.style.display="none",l.error({position:"topRight",message:"We're sorry, there are no more posts to load"})):(n++,console.log("page: ",n),t)}catch(t){throw new Error(t.message)}}const v=document.querySelector(".form"),L=document.querySelector(".imagesFetch"),a=document.querySelector(".loader"),p=document.querySelector(".btn"),u=document.querySelector(".form-input");v.addEventListener("submit",i=>{i.preventDefault();const o=u.value.trim();if(L.innerHTML="",o===""){l.error({title:"Error",message:"Enter search images value",position:"topRight"});return}a.style.display="block",d(o).then(r=>{console.log("response: ",r),r.data.length===0&&l.error({title:"Error",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"}),a.style.display="none",m(r.data.hits),p.style.display="block",p.addEventListener("click",()=>{a.style.display="block",d(o).then(t=>{console.log("response2: ",t),a.style.display="none",m(t.data.hits)}).catch(t=>{console.log(t)})})}).catch(r=>{console.log(r)}),u.value=""});
+          </li>  `,"");f.insertAdjacentHTML("beforeend",t),h.refresh()}async function u(i,t){const s="43173042-04092544e8d4f8f0c3df25e51",r=new URLSearchParams({orientation:"horizontal",image_type:"photo",safesearch:!0,per_page:15,page:t}),{data:e}=await y.get(`https://pixabay.com/api/?key=${s}&q=${i}&${r}`);return e}const w=document.querySelector(".form"),v=document.querySelector(".imagesFetch"),l=document.querySelector(".loader"),a=document.querySelector(".btn"),m=document.querySelector(".form-input");let c=1;w.addEventListener("submit",async i=>{i.preventDefault();const t=m.value.trim();if(v.innerHTML="",t===""){n.error({title:"Error",message:"Enter search images value",position:"topRight"}),a.style.display="none";return}try{l.style.display="block",c=1;const s=await u(t,c);if(s.length===0){n.error({title:"Error",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"});return}l.style.display="none",d(s.hits),a.style.display="block",s.hits.length<15&&(a.style.display="none",n.error({position:"topRight",message:"We're sorry, there are no more posts to load"})),a.dataset.inputValue=t}catch{l.style.display="none",n.error({title:"Error",message:"Something went wrong. Please try again!",position:"topRight"})}m.value=""});a.addEventListener("click",async i=>{i.preventDefault(),c++,l.style.display="block";try{const t=i.currentTarget.dataset.inputValue,s=await u(t,c);l.style.display="none",d(s.hits);const e=document.querySelectorAll(".imagesFetch-item")[0].getBoundingClientRect();window.scrollBy({top:e.height*2,behavior:"smooth"}),s.hits.length<15&&(a.style.display="none",n.error({position:"topRight",message:"We're sorry, there are no more posts to load"}))}catch{n.error({title:"Error",message:"Something went wrong. Please try again!",position:"topRight"}),l.style.display="none"}});
 //# sourceMappingURL=commonHelpers.js.map
